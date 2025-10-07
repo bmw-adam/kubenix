@@ -1,3 +1,7 @@
-{ kubenix, ... }:
+{ ... }:
 
-import ./example.nix { inherit kubenix; }
+{
+  imports = [ 
+    ./example.nix
+  ];
+}
