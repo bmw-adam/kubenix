@@ -248,11 +248,11 @@
         "tpv-frontend-vendor": "tpv-frontend-vendor"
       },
       "locked": {
-        "lastModified": 1760882813,
-        "narHash": "sha256-jtcKX3616ZyTcIx5OQZwVlfiWlxb0iTgLr6/n0TTs6k=",
+        "lastModified": 1760886115,
+        "narHash": "sha256-48OO9Y4ANuBNpjkULUKctnsVmZ7JfKSRf4BC6LoCYdk=",
         "owner": "bmw-adam",
         "repo": "TpvSelect",
-        "rev": "05fec9da8c7a1e32c4da57742a1ef04518eed656",
+        "rev": "422cb0e4e4335ecc8a359b2ea9304eeb33d62a0e",
         "type": "github"
       },
       "original": {
