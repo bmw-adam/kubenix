@@ -18,7 +18,7 @@
         modules = [
           ./kubernetes/default.nix
           ./secrets.nix
-          # sops-nix.nixosModules.sops
+          sops-nix.nixosModules.sops
         ];
       }).config.kubernetes.result;
 
