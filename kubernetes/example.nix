@@ -13,6 +13,7 @@ in
       metadata.labels.app = "example";
       spec.containers.nginx = {
         image = "tpvsel:latest";
+        imagePullPolicy = "Never";
 
         # Always include ports to avoid 'protocol missing' errors
         ports = [
