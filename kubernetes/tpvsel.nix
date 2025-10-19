@@ -1,12 +1,12 @@
-{ kubenix, config, nixpkgs, tpvsel, ... }:
+{ kubenix, config, pkgs, tpvsel, ... }:
 
 let
-  dockerImage = nixpkgs.dockerTools.buildImage {
+  dockerImage = pkgs.dockerTools.buildImage {
     name = "tpvsel";
     tag = "latest";
 
     # non-deprecated way
-    copyToRoot = nixpkgs.buildEnv {
+    copyToRoot = pkgs.buildEnv {
       name = "tpvsel-env";
       paths = [ tpvsel.defaultPackage.x86_64-linux ];
     };
