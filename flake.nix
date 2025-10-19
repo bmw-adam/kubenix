@@ -11,9 +11,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       myK8sManifest = (kubenix.evalModules.${system} {
-        # specialArgs = {
-          # inherit sops-nix;
-        # };
+        specialArgs = {
+          inherit sops-nix;
+        };
         modules = [
           ./kubernetes/default.nix
           ./secrets.nix
