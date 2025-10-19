@@ -1,18 +1,21 @@
-{ kubenix, config, pkgs, tpvsel, ... }:
+{ kubenix, config, nixpkgs, tpvsel, ... }:
 
 let
-  dockerImage = pkgs.dockerTools.buildImage {
+  dockerImage = nixpkgs.dockerTools.buildImage {
     name = "tpvsel";
     tag = "latest";
-    contents = [ tpvsel.defaultPackage.x86_64-linux ];
+
+    # non-deprecated way
+    copyToRoot = nixpkgs.buildEnv {
+      name = "tpvsel-env";
+      paths = [ tpvsel.defaultPackage.x86_64-linux ];
+    };
+
     config = {
-      Cmd = [ "/bin/tpvsel" ];
-      Expose = [8080];
+      Cmd = [ "/bin/tpvsel" ]; # adjust if binary path is different
+      Expose = [8080];         # adjust port
     };
   };
-
-  # The path to the actual image tarball
-  dockerTar = "${dockerImage}";
 in
 {
   imports = [
@@ -23,10 +26,7 @@ in
     pods.tpvsel = {
       metadata.labels.app = "tpvsel";
       spec.containers.tpvsel = {
-        # The image name that will be *used in Kubernetes manifest*.
-        # You must manually load this tar into whatever registry or node you’re targeting.
-        image = "tpvsel:local";
-
+        image = "tpvsel:local"; # must be loaded into cluster manually
         ports = [
           { containerPort = 8080; protocol = "TCP"; }
         ];
@@ -47,8 +47,6 @@ in
     };
   };
 
-  # Expose the image tar for loading into Docker
-  outputs = {
-    dockerTar = dockerImage;
-  };
+  # expose the docker tar as another attribute
+  dockerTar = dockerImage;
 }
