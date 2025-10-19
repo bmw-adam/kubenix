@@ -1,4 +1,4 @@
-{ kubenix, ... }: 
+{ kubenix, config, ... }: 
 let
   tlsCrtPath = config.sops.secrets.tlsCrt.path;
   tlsKeyPath = config.sops.secrets.tlsKey.path;
