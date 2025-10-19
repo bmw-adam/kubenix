@@ -12,7 +12,7 @@ in
     pods.example = {
       metadata.labels.app = "example";
       spec.containers.nginx = {
-        image = "nginx:latest";
+        image = "tpvsel";
 
         # Always include ports to avoid 'protocol missing' errors
         ports = [
