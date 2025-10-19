@@ -2,11 +2,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     kubenix.url = "github:hall/kubenix";
-    tpvsel.url = "github:bmw-adam/TpvSelect";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, kubenix, flake-utils, tpvsel, ... }:
+  outputs = { self, nixpkgs, kubenix, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
