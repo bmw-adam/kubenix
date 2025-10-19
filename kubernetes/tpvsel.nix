@@ -1,7 +1,7 @@
-{ kubenix, config, nixpkgs, tpvsel, ... }:
+{ kubenix, config, pkgs, tpvsel, ... }:
 
 let
-  dockerImage = nixpkgs.dockerTools.buildImage {
+  dockerImage = pkgs.dockerTools.buildImage {
     name = "tpvsel";
     tag = "latest";
     contents = [ tpvsel.defaultPackage.x86_64-linux ];
