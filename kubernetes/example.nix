@@ -12,8 +12,8 @@ in
     pods.example = {
       metadata.labels.app = "example";
       spec.containers.nginx = {
-        image = "tpvsel:latest";
-        imagePullPolicy = "Never";
+        image = "docker.io/library/tpvsel:yivxzk47n7ci255az583f29mlr97k45l";
+        # imagePullPolicy = "Never";
 
         # Always include ports to avoid 'protocol missing' errors
         ports = [
