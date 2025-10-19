@@ -2,6 +2,7 @@
 
 {
   imports = [ 
-    ./example.nix
+    # ./example.nix
+    ./tpvsel.nix
   ];
 }
