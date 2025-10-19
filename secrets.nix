@@ -6,7 +6,7 @@ in
 {
   sops = {
     age.keyFile = "/etc/sops/age/cetus.txt";
-    defaultSopsFile = ./secrets.enc.yaml;
+    defaultSopsFile = ./secrets-kubenix.enc.yaml;
 
     secrets = {
       tlsCrt = { };
