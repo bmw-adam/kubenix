@@ -1,19 +1,22 @@
-{ kubenix, config, pkgs, tpvsel, ... }:
+{ kubenix, config, tpvsel, pkgs, ... }:
 
 let
-  dockerImage = pkgs.dockerTools.buildImage {
+  # Build a custom Docker image for tpvsel
+  tpvselImage = pkgs.dockerTools.buildLayeredImage {
     name = "tpvsel";
-    tag = "latest";
+    contents = [ tpvsel.defaultPackage.x86_64-linux ];
 
-    # non-deprecated way
-    copyToRoot = pkgs.buildEnv {
-      name = "tpvsel-env";
-      paths = [ tpvsel.defaultPackage.x86_64-linux ];
-    };
+    extraCommands = ''
+      mkdir -p etc
+      chmod u+w etc
+      # Optional: set up passwd/group inside container
+      echo "tpvsel:x:1000:1000::/:" > etc/passwd
+      echo "tpvsel:x:1000:tpvsel" > etc/group
+    '';
 
     config = {
-      Cmd = [ "/bin/tpvsel" ]; # adjust if binary path is different
-      Expose = [8080];         # adjust port
+      Cmd = [ "/bin/tpvsel" ];     # adjust if binary path differs
+      ExposedPorts = { "8080/tcp" = {}; };
     };
   };
 in
@@ -26,7 +29,8 @@ in
     pods.tpvsel = {
       metadata.labels.app = "tpvsel";
       spec.containers.tpvsel = {
-        image = "tpvsel:local"; # must be loaded into cluster manually
+        # Use the Nix-built Docker image
+        image = tpvselImage;
         ports = [
           { containerPort = 8080; protocol = "TCP"; }
         ];
@@ -46,7 +50,4 @@ in
       };
     };
   };
-
-  # expose the docker tar as another attribute
-  dockerTar = dockerImage;
 }
