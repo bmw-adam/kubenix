@@ -5,7 +5,8 @@ let
 in
 {
   sops = {
-    age.keyFile = "/etc/sops/age/cetus.txt";
+    age.keyFile = "/home/bmwadam/.config/sops/age/cetus.txt";
+    # age.keyFile = "/etc/sops/age/cetus.txt";
     defaultSopsFile = ./secrets-kubenix.enc.yaml;
 
     secrets = {
