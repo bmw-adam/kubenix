@@ -1,4 +1,9 @@
-{ kubenix, ... }: {
+{ kubenix, ... }: 
+let
+  tlsCrtPath = config.sops.secrets.tlsCrt.path;
+  tlsKeyPath = config.sops.secrets.tlsKey.path;
+in
+{
   imports = [
     kubenix.modules.k8s
   ];
