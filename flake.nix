@@ -9,7 +9,9 @@
   outputs = { self, nixpkgs, kubenix, flake-utils, tpvsel, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.packages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+        };
 
         myK8sManifest = (kubenix.evalModules.${system} {
           modules = [
