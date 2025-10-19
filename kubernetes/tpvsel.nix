@@ -1,5 +1,5 @@
 { kubenix, config, pkgs, ... }: {
-  imports = with kubenix.modules; [ k8s docker ];
+  imports = with kubenix.modules; [ k8s ];
 
   docker = {
     registry.url = "docker.somewhere.io";
