@@ -5,13 +5,17 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, kubenix, ... }:
+  outputs = { self, nixpkgs, kubenix, sops-nix, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
       myK8sManifest = (kubenix.evalModules.${system} {
-        module = ./kubernetes/default.nix;
+        modules = [
+          ./kubernetes/default.nix
+          ./secrets.nix
+          sops-nix.nixosModules.sops
+        ];
       }).config.kubernetes.result;
 
       k8sJsonPackage = pkgs.stdenv.mkDerivation {
