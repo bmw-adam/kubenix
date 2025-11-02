@@ -39,6 +39,8 @@
                   "start"
                   "--background=false"
                   "--base_dir=/db"
+                  "--webserver_bind_address=0.0.0.0"
+                  "--rpc_bind_addresses=0.0.0.0"
                 ];
 
                 ports = [
