@@ -26,6 +26,7 @@
 
           spec = {
             hostname = "yugabyte01";
+            hostNetwork = true;
 
             containers = [
               {
@@ -84,13 +85,13 @@
       metadata.labels.app = "yugabyte";
       spec = {
         selector.app = "yugabyte";
-        # type = "NodePort";
+        type = "NodePort";
         ports = [
-          { name = "master-ui"; port = 7000; targetPort = 7000; protocol = "TCP"; nodePort = 30070; }
-          { name = "yb-ui"; port = 9000; targetPort = 9000; protocol = "TCP"; nodePort = 30090; }
-          { name = "ysql"; port = 5433; targetPort = 5433; protocol = "TCP"; nodePort = 30433; }
-          { name = "ysql-web"; port = 15433; targetPort = 15433; protocol = "TCP"; nodePort = 32433; }
-          { name = "ycql"; port = 9042; targetPort = 9042; protocol = "TCP"; nodePort = 31009; }
+          { name = "master-ui"; port = 7000; targetPort = 7000; protocol = "TCP"; }
+          { name = "yb-ui"; port = 9000; targetPort = 9000; protocol = "TCP"; }
+          { name = "ysql"; port = 5433; targetPort = 5433; protocol = "TCP"; }
+          { name = "ysql-web"; port = 15433; targetPort = 15433; protocol = "TCP"; }
+          { name = "ycql"; port = 9042; targetPort = 9042; protocol = "TCP"; }
         ];
       };
     };
