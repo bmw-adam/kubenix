@@ -69,7 +69,7 @@
         };
       };
     };
-    
+
     # Persistent Volume Claim
     persistentVolumeClaims.ybdata-pvc = {
       metadata.name = "ybdata-pvc";
@@ -84,7 +84,7 @@
       metadata.labels.app = "yugabyte";
       spec = {
         selector.app = "yugabyte";
-        type = "ClusterIP";
+        type = "NodePort";
         ports = [
           { name = "master-ui"; port = 7000; targetPort = 7000; protocol = "TCP"; }
           { name = "yb-ui"; port = 9000; targetPort = 9000; protocol = "TCP"; }
