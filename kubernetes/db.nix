@@ -86,11 +86,11 @@
         selector.app = "yugabyte";
         type = "NodePort";
         ports = [
-          { name = "master-ui"; port = 7000; targetPort = 7000; protocol = "TCP"; }
-          { name = "yb-ui"; port = 9000; targetPort = 9000; protocol = "TCP"; }
-          { name = "ysql"; port = 5433; targetPort = 5433; protocol = "TCP"; }
-          { name = "ysql-web"; port = 15433; targetPort = 15433; protocol = "TCP"; }
-          { name = "ycql"; port = 9042; targetPort = 9042; protocol = "TCP"; }
+          { name = "master-ui"; port = 7000; nodePort = 31890; protocol = "TCP"; }
+          { name = "yb-ui"; port = 9000; nodePort = 31891; protocol = "TCP"; }
+          { name = "ysql"; port = 5433; nodePort = 31892; protocol = "TCP"; }
+          { name = "ysql-web"; port = 15433; nodePort = 31893; protocol = "TCP"; }
+          { name = "ycql"; port = 9042; nodePort = 31894; protocol = "TCP"; }
         ];
       };
     };
