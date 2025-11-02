@@ -26,7 +26,7 @@
 
           spec = {
             hostname = "yugabyte01";
-            hostNetwork = tue;
+            hostNetwork = true;
 
             containers = [
               {
