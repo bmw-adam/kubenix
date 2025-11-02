@@ -122,7 +122,7 @@
 
     # Persistent Volume Claim
     persistentVolumeClaims.ybdata-pvc = {
-      metadata.name = "ybdaa-pvtc";
+      metadata.name = "ybdata-pvc";
       spec = {
         accessModes = [ "ReadWriteOnce" ];
         resources.requests.storage = "3Gi";
