@@ -6,12 +6,14 @@
 
   kubernetes.resources = {
     # Pod definition
-    pods.yugabyte = {
+    deployments.yugabyte = {
       metadata = {
         name = "yugabyte";
         labels.app = "yugabyte";
       };
       spec = {
+        replicas = 1;
+
         hostname = "yugabyte01";
         containers.yugabyte = {
           image = "yugabytedb/yugabyte:2.25.2.0-b359";
@@ -56,7 +58,7 @@
 
     # Persistent Volume Claim
     persistentVolumeClaims.ybdata-pvc = {
-      metadata.name = "ybdata-pvc";
+      metadata.name = "ybdaa-pvtc";
       spec = {
         accessModes = [ "ReadWriteOnce" ];
         resources.requests.storage = "3Gi";
