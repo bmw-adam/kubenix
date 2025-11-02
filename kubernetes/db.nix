@@ -69,57 +69,7 @@
         };
       };
     };
-
-    # deployments.yugabyte = {
-    #   metadata = {
-    #     name = "yugabyte";
-    #     labels.app = "yugabyte";
-    #   };
-    #   spec = {
-    #     replicas = 1;
-
-    #     hostname = "yugabyte01";
-    #     containers.yugabyte = {
-    #       image = "yugabytedb/yugabyte:2.25.2.0-b359";
-    #       imagePullPolicy = "IfNotPresent";
-
-    #       command = [
-    #         "bin/yugabyted"
-    #         "start"
-    #         "--background=false"
-    #         "--base_dir=/db"
-    #       ];
-
-    #       ports = [
-    #         { name = "master-ui"; containerPort = 7000; protocol = "TCP"; }
-    #         { name = "yb-ui"; containerPort = 9000; protocol = "TCP"; }
-    #         { name = "ysql"; containerPort = 5433; protocol = "TCP"; }
-    #         { name = "ysql-web"; containerPort = 15433; protocol = "TCP"; }
-    #         { name = "ycql"; containerPort = 9042; protocol = "TCP"; }
-    #       ];
-
-    #       volumeMounts = [
-    #         {
-    #           name = "ybdata";
-    #           mountPath = "/db";
-    #         }
-    #       ];
-
-    #       resources = {
-    #         limits.memory = "2Gi";
-    #         requests.memory = "512Mi";
-    #       };
-    #     };
-
-    #     volumes = [
-    #       {
-    #         name = "ybdata";
-    #         persistentVolumeClaim.claimName = "ybdata-pvc";
-    #       }
-    #     ];
-    #   };
-    # };
-
+    
     # Persistent Volume Claim
     persistentVolumeClaims.ybdata-pvc = {
       metadata.name = "ybdata-pvc";
