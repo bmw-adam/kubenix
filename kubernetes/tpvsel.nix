@@ -10,19 +10,61 @@ in
 
   kubernetes.resources = {
     deployments.tpvsel = {
-      metadata.labels.app = "tpvsel";
-      spec.containers.tpvsel = {
-        image = "tpvsel:latest";
-        imagePullPolicy = "Never";
-        # imagePullPolicy = "IfNotPresent";
+      metadata = {
+        name = "tpvsel";
+        labels.app = "tpvsel";
+      };
 
-        # Always include ports to avoid 'protocol missing' errors
-        ports = [
-          { containerPort = 80; protocol = "TCP"; }
-          { containerPort = 443; protocol = "TCP"; }
-        ];
+      spec = {
+        replicas = 1;
+
+        selector = {
+          matchLabels.app = "tpvsel";
+        };
+
+        template = {
+          metadata = {
+            labels.app = "tpvsel";
+          };
+
+          spec = {
+            hostname = "tpvsel01";
+
+            containers = [
+              {
+                name = "tpvsel";
+                image = "tpvsel:latest";
+                imagePullPolicy = "Never";
+
+                command = [
+                  "find / | grep tpvsel"
+                ];
+
+                ports = [
+                  { name = "tpvsel"; containerPort = 80; protocol = "TCP"; }
+                  { name = "tpvsel"; containerPort = 443; protocol = "TCP"; }
+                ];
+              }
+            ];
+          };
+        };
       };
     };
+
+    # deployments.tpvsel = {
+    #   metadata.labels.app = "tpvsel";
+    #   spec.containers.tpvsel = {
+    #     image = "tpvsel:latest";
+    #     imagePullPolicy = "Never";
+    #     # imagePullPolicy = "IfNotPresent";
+
+    #     # Always include ports to avoid 'protocol missing' errors
+    #     ports = [
+    #       { containerPort = 80; protocol = "TCP"; }
+    #       { containerPort = 443; protocol = "TCP"; }
+    #     ];
+    #   };
+    # };
 
     services.tpvsel = {
       metadata.labels.app = "tpvsel";
