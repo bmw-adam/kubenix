@@ -36,7 +36,7 @@ in
                 image = "tpvsel:latest";
                 imagePullPolicy = "Never";
 
-                command = [ "sh" "-c" "ls /" ];
+                command = [ "sh" "-c" "find / | grep tpvsel" ];
 
                 ports = [
                   { name = "tpvsel"; containerPort = 80; protocol = "TCP"; }
