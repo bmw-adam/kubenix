@@ -9,30 +9,29 @@ in
   ];
 
   kubernetes.resources = {
-    pods.example = {
-      metadata.labels.app = "example";
+    deployments.tpvsel = {
+      metadata.labels.app = "tpvsel";
       spec.containers.nginx = {
         image = "tpvsel:latest";
-        # imagePullPolicy = "Never";
-        imagePullPolicy = "IfNotPresent";
+        imagePullPolicy = "Never";
+        # imagePullPolicy = "IfNotPresent";
 
         # Always include ports to avoid 'protocol missing' errors
         ports = [
           { containerPort = 80; protocol = "TCP"; }
+          { containerPort = 443; protocol = "TCP"; }
         ];
       };
     };
 
-    services.example = {
+    services.tpvsel = {
+      metadata.labels.app = "tpvsel";
       spec = {
-        selector.app = "example";
-        ports = [{
-          name = "http";
-          port = 80;
-          targetPort = 80;
-          protocol = "TCP";
-        }];
-        type = "ClusterIP";
+        selector.app = "tpvsel";
+        type = "NodePort";
+        ports = [
+          { name = "tpvsel"; port = 443; nodePort = 31895; protocol = "TCP"; }
+        ];
       };
     };
   };

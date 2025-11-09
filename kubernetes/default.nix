@@ -2,7 +2,7 @@
 
 {
   imports = [ 
-    ./example.nix
+    ./tpvsel.nix
     ./db.nix
     # ./dockerDefinitions/default.nix
     # ./tpvsel.nix
