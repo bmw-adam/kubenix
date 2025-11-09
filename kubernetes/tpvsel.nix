@@ -11,7 +11,7 @@ in
   kubernetes.resources = {
     deployments.tpvsel = {
       metadata.labels.app = "tpvsel";
-      spec.containers.nginx = {
+      spec.containers.tpvsel = {
         image = "tpvsel:latest";
         imagePullPolicy = "Never";
         # imagePullPolicy = "IfNotPresent";
