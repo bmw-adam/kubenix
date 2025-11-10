@@ -39,8 +39,8 @@ in
                 command = [ "sh" "-c" "find / | grep tpvsel" ];
 
                 ports = [
-                  { name = "tpvsel"; containerPort = 80; protocol = "TCP"; }
-                  { name = "tpvsel"; containerPort = 443; protocol = "TCP"; }
+                  { name = "tpvsel"; containerPort = 1234; protocol = "TCP"; }
+                  { name = "tpvsel"; containerPort = 1235; protocol = "TCP"; }
                 ];
               }
             ];
@@ -70,7 +70,7 @@ in
         selector.app = "tpvsel";
         type = "NodePort";
         ports = [
-          { name = "tpvsel"; port = 443; nodePort = 31895; protocol = "TCP"; }
+          { name = "tpvsel"; port = 1235; nodePort = 31895; protocol = "TCP"; }
         ];
       };
     };
