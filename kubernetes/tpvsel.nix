@@ -9,6 +9,16 @@ in
   ];
 
   kubernetes.resources = {
+    secrets.tpvsel = {
+      metadata.name = "tpvsel-secrets";
+      stringData = {
+        TLS_KEY = builtins.readFile (builtins.getEnv "TLS_KEY");
+        TLS_CRT = builtins.readFile (builtins.getEnv "TLS_CRT");
+        OAUTH_CLIENT = builtins.readFile (builtins.getEnv "OAUTH_CLIENT");
+        DIST_DIR_PATH = builtins.readFile (builtins.getEnv "DIST_DIR_PATH");
+      };
+    };
+
     deployments.tpvsel = {
       metadata = {
         name = "tpvsel";
@@ -42,28 +52,44 @@ in
                   { name = "tpvsel"; containerPort = 1234; protocol = "TCP"; }
                   { name = "tpvsel"; containerPort = 1235; protocol = "TCP"; }
                 ];
+
+                env = [
+                    {
+                      name = "TLS_KEY";
+                      valueFrom.secretKeyRef = {
+                        name = "tpvsel-secrets";
+                        key = "TLS_KEY";
+                      };
+                    }
+                    {
+                      name = "TLS_CRT";
+                      valueFrom.secretKeyRef = {
+                        name = "tpvsel-secrets";
+                        key = "TLS_CRT";
+                      };
+                    }
+                    {
+                      name = "OAUTH_CLIENT";
+                      valueFrom.secretKeyRef = {
+                        name = "tpvsel-secrets";
+                        key = "OAUTH_CLIENT";
+                      };
+                    }
+                    {
+                      name = "DIST_DIR_PATH";
+                      valueFrom.secretKeyRef = {
+                        name = "tpvsel-secrets";
+                        key = "DIST_DIR_PATH";
+                      };
+                    }
+                  ];
               }
             ];
           };
         };
       };
     };
-
-    # deployments.tpvsel = {
-    #   metadata.labels.app = "tpvsel";
-    #   spec.containers.tpvsel = {
-    #     image = "tpvsel:latest";
-    #     imagePullPolicy = "Never";
-    #     # imagePullPolicy = "IfNotPresent";
-
-    #     # Always include ports to avoid 'protocol missing' errors
-    #     ports = [
-    #       { containerPort = 80; protocol = "TCP"; }
-    #       { containerPort = 443; protocol = "TCP"; }
-    #     ];
-    #   };
-    # };
-
+    
     services.tpvsel = {
       metadata.labels.app = "tpvsel";
       spec = {
