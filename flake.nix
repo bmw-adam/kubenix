@@ -15,7 +15,7 @@
 
         myK8sManifest = (kubenix.evalModules.${system} {
           specialArgs = {
-            inherit pkgs;
+            inherit pkgs tpvsel;
           };
           modules = [
             ./kubernetes/default.nix
