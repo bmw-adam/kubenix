@@ -1,4 +1,4 @@
-{ kubenix, config, ... }: 
+{ kubenix, config, tpvsel, ... }: 
 let
   # tlsCrtPath = config.sops.secrets.tlsCrt.path;
   # tlsKeyPath = config.sops.secrets.tlsKey.path;
@@ -36,7 +36,7 @@ in
                 image = "tpvsel:latest";
                 imagePullPolicy = "Never";
 
-                # command = [ "/bin/tpvsel/bin/backend" ];
+                command = [ "${tpvsel.packages.${pkgs.system}.default}/bin/backend" ];
 
                 ports = [
                   { name = "tpvsel"; containerPort = 1234; protocol = "TCP"; }

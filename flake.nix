@@ -6,7 +6,7 @@
     tpvsel.url = "github:bmw-adam/TpvSelect";
   };
 
-  outputs = { self, nixpkgs, kubenix, flake-utils, ... }:
+  outputs = { self, nixpkgs, kubenix, flake-utils, tpvsel, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
