@@ -36,7 +36,7 @@ in
                 image = "tpvsel:latest";
                 imagePullPolicy = "Never";
 
-                command = [ "/bin/tpvsel/bin/backend" ];
+                # command = [ "/bin/tpvsel/bin/backend" ];
 
                 ports = [
                   { name = "tpvsel"; containerPort = 1234; protocol = "TCP"; }

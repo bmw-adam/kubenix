@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     kubenix.url = "github:hall/kubenix";
     flake-utils.url = "github:numtide/flake-utils";
+    tpvsel.url = "github:bmw-adam/TpvSelect";
   };
 
   outputs = { self, nixpkgs, kubenix, flake-utils, ... }:
