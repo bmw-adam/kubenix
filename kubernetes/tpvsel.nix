@@ -1,7 +1,5 @@
 { kubenix, config, tpvsel, pkgs, ... }: 
 let
-  # tlsCrtPath = config.sops.secrets.tlsCrt.path;
-  # tlsKeyPath = config.sops.secrets.tlsKey.path;
 in
 {
   imports = [
@@ -42,6 +40,23 @@ in
                   { name = "tpvsel"; containerPort = 1234; protocol = "TCP"; }
                   { name = "tpvsel"; containerPort = 1235; protocol = "TCP"; }
                 ];
+
+                volumeMounts = [
+                  {
+                    name = "k3sdata";
+                    mountPath = "/k3sdata";
+                  }
+                ];
+              }
+            ];
+
+            volumes = [
+              {
+                name = "k3sdata";
+                hostPath = {
+                  path = "/run/secrets";   # <- filesystem mount on the host
+                  type = "Directory";   # safe to use directory type
+                };
               }
             ];
           };
