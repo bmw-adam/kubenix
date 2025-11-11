@@ -36,6 +36,13 @@ in
 
                 command = [ "${tpvsel.packages.${pkgs.system}.default}/bin/backend" ];
 
+                env = [
+                  { name = "TLS_KEY"; value = "/k3sdata/secrets/tlsKey"; }
+                  { name = "TLS_CRT"; value = "/k3sdata/secrets/tlsCrt"; }
+                  { name = "DIST_DIR_PATH"; value = "${tpvsel.packages.${pkgs.system}.default}/bin/dist"; }
+                  { name = "OAUTH_CLIENT"; value = "/k3sdata/secrets/oauthClient"; }
+                ];
+
                 ports = [
                   { name = "tpvsel"; containerPort = 1234; protocol = "TCP"; }
                   { name = "tpvsel"; containerPort = 1235; protocol = "TCP"; }
