@@ -61,7 +61,7 @@ in
               {
                 name = "k3sdata";
                 hostPath = {
-                  path = "/run/secrets";   # <- filesystem mount on the host
+                  path = "/k3sdata";   # <- filesystem mount on the host
                   type = "Directory";   # safe to use directory type
                 };
               }
