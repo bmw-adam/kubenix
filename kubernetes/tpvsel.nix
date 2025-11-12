@@ -43,6 +43,7 @@ in
                   { name = "OAUTH_CLIENT"; value = "/k3sdata/secrets/oauthClient"; }
                   { name = "OTEL_EXPORTER_OTLP_ENDPOINT"; value = "https://otlp-gateway-prod-eu-west-2.grafana.net/otlp"; }
                   { name = "GRAFANA_OTEL_HEADERS_PATH"; value = "/k3sdata/secrets/grafanaOtelHeaders"; }
+                  { name = "RUST_LOG"; value = "INFO"; }
                 ];
 
                 ports = [
