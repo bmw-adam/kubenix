@@ -41,6 +41,8 @@ in
                   { name = "TLS_CRT"; value = "/k3sdata/secrets/tlsCrt"; }
                   { name = "DIST_DIR_PATH"; value = "${tpvsel.packages.${pkgs.system}.default}/bin/dist"; }
                   { name = "OAUTH_CLIENT"; value = "/k3sdata/secrets/oauthClient"; }
+                  { name = "OTEL_EXPORTER_OTLP_ENDPOINT"; value = "https://otlp-gateway-prod-eu-west-2.grafana.net/otlp"; }
+                  { name = "GRAFANA_OTEL_HEADERS_PATH"; value = "/k3sdata/secrets/grafanaOtelHeaders"; }
                 ];
 
                 ports = [
@@ -61,8 +63,8 @@ in
               {
                 name = "k3sdata";
                 hostPath = {
-                  path = "/k3sdata";   # <- filesystem mount on the host
-                  type = "Directory";   # safe to use directory type
+                  path = "/k3sdata";
+                  type = "Directory";
                 };
               }
             ];
