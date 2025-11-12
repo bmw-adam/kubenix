@@ -210,11 +210,11 @@
     "tpv-backend-vendor": {
       "flake": false,
       "locked": {
-        "lastModified": 1762976027,
-        "narHash": "sha256-90tybGW5b49ukhANaAyFjdjr8M/bYhSYWXP83lC6hVY=",
+        "lastModified": 1762976405,
+        "narHash": "sha256-xc+3qsHDVqdGyoQ9iAh84PKYSxO/MmomxsDsESpjQDw=",
         "owner": "bmw-adam",
         "repo": "tpvselect-backend-vendor",
-        "rev": "9c436977366308cca71fd34e9827fccf6a01b7f6",
+        "rev": "b7880067acdd95a3ab63945b47e0a8286bfa48a1",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
         "tpv-frontend-vendor": "tpv-frontend-vendor"
       },
       "locked": {
-        "lastModified": 1762976218,
-        "narHash": "sha256-ENdxU8JLSLq4nA1Gihd3d16ktxx2ibbYt5nrtjQeKug=",
+        "lastModified": 1762976898,
+        "narHash": "sha256-QAOfnTIDQWI6BZkJ++fFcZVt1BIOXcEJ6BQ9wMOXkG0=",
         "owner": "bmw-adam",
         "repo": "TpvSelect",
-        "rev": "1614220054de2dfd78828ecdbacdc7c5dd9ce366",
+        "rev": "2626e9f8c90341a3d9dd9a2e142c014c843ae56d",
         "type": "github"
       },
       "original": {
