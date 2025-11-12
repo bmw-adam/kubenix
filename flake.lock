@@ -207,52 +207,18 @@
         "type": "github"
       }
     },
-    "tpv-backend-vendor": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762977242,
-        "narHash": "sha256-uHLO+sLM1oew36RelMz1WKiJBitMP8gH3OqlvVF1Skc=",
-        "owner": "bmw-adam",
-        "repo": "tpvselect-backend-vendor",
-        "rev": "0488a070b2860950301a123cce164d7258ebd778",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bmw-adam",
-        "repo": "tpvselect-backend-vendor",
-        "type": "github"
-      }
-    },
-    "tpv-frontend-vendor": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762977260,
-        "narHash": "sha256-yoVCweDoCEqwMUHbLSAXtSdh4wM0Y7a+LMuiZKQWWEc=",
-        "owner": "bmw-adam",
-        "repo": "tpvselect-frontend-vendor",
-        "rev": "d17f3d97fa756c9de2e14166bf7fe09138892db0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bmw-adam",
-        "repo": "tpvselect-frontend-vendor",
-        "type": "github"
-      }
-    },
     "tpvsel": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_3",
-        "rust-overlay": "rust-overlay",
-        "tpv-backend-vendor": "tpv-backend-vendor",
-        "tpv-frontend-vendor": "tpv-frontend-vendor"
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1762977334,
-        "narHash": "sha256-WvGnvGsDhnaX/1hFq8xs7mqA+iEHKCrTEbJO9fOOWk4=",
+        "lastModified": 1762978108,
+        "narHash": "sha256-VfDkVoM/uG5HYBGML6rxN9blWn78hY/sGYS6PMMQJlE=",
         "owner": "bmw-adam",
         "repo": "TpvSelect",
-        "rev": "cb27eec2953e8d5cd5153c81b1af1a065ca7b712",
+        "rev": "c3d1bce2512b123bac30ec045eab4ec17fceae9a",
         "type": "github"
       },
       "original": {
